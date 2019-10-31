@@ -72,7 +72,7 @@ class App extends Component {
             ? <>
               <div className="introducing">
                 <p>
-                  Tính từ ngày {Moment(this.state.thatDay, 'YYYY-M-D').format("DD-MM-YYYY")} thì đã được:
+                  Tính từ ngày {Moment(this.state.thatDay).format("DD-MM-YYYY")} thì đã được:
                 </p>
               </div>
               <div className="clock">

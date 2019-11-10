@@ -14,6 +14,7 @@
   @include flex-align-i(center);
 }
 .introducing {
+  min-width: 500px;
   font-weight: $introducing-font-weight;
   font-size: $introducing-font-size;
   color: #fdfffa;

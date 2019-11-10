@@ -1,0 +1,14 @@
+@mixin background-clip($value) {
+  -webkit-background-clip: $value;
+  -moz-background-clip: $value;
+  -ms-background-clip: $value;
+  background-clip: $value;
+}
+
+@mixin background-clip-text {
+  @include background-clip(text);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+  text-fill-color: transparent;
+}

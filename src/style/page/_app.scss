@@ -1,0 +1,75 @@
+.App {
+  @extend .full-view-display;
+  @include user-select(none);
+  font-family: $primary-font;
+  background: $app-background-color;
+  overflow: hidden;
+  position: relative;
+}
+.group {
+  @include middle-align-absolute;
+  @include display-flex;
+  @include flex-dir(column);
+  @include flex-just(center);
+  @include flex-align-i(center);
+}
+.introducing {
+  font-weight: $introducing-font-weight;
+  font-size: $introducing-font-size;
+  color: #fdfffa;
+  background: rgba(255, 253, 160, 1);
+  background: -webkit-linear-gradient(
+      left,
+      #00ffff 0%,
+      #97fba0 25%,
+      #97b1fb 50%,
+      #00ffff 100%
+    )
+    repeat;
+  @include background-clip-text;
+  @include animation(masked-animation 50s infinite linear);
+}
+@include keyframes(masked-animation) {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -8000px -3000px;
+  }
+}
+.clock {
+  @include display-flex;
+  @include flex-dir(row);
+  @include flex-just(center);
+  min-width: 800px;
+  font-size: 100px;
+}
+.clock-element {
+  @include display-flex;
+  @include flex-dir(column);
+  @include flex-align-i(center);
+}
+.dot {
+  @include align-self(flex-start);
+}
+.day {
+  color: #336371;
+}
+.hour {
+  color: #4b909f;
+}
+.minute {
+  color: #8c999f;
+}
+.second {
+  color: #bdcece;
+}
+.dot1 {
+  color: #408089;
+}
+.dot2 {
+  color: #71a7b3;
+}
+.dot3 {
+  color: #9bb5b6;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BarLoader } from "react-spinners";
 import Moment from "moment";
-import "./App.css";
+import "./main.scss";
 
 class App extends Component {
   constructor() {

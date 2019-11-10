@@ -1,0 +1,6 @@
+@mixin user-select($variable: auto) {
+  -webkit-user-select: $variable;
+  -moz-user-select: $variable;
+  -ms-user-select: $variable;
+  user-select: $variable;
+}

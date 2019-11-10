@@ -1,0 +1,43 @@
+@mixin translate($values...) {
+  -webkit-transform: translate($values);
+  -moz-transform: translate($values);
+  -ms-transform: translate($values);
+  -o-transform: translate($values);
+  transform: translate($values);
+}
+
+@mixin rotate($value) {
+  -webkit-transform: rotate($value);
+  -moz-transform: rotate($value);
+  transform: rotate($value);
+}
+
+@mixin scale($value) {
+  -webkit-transform: scale($value);
+  -moz-transform: scale($value);
+  transform: scale($value);
+}
+
+@mixin skew($value) {
+  -webkit-transform: skew($value);
+  -moz-transform: skew($value);
+  transform: skew($value);
+}
+
+@mixin transform($type, $values...) {
+  @if $type == 'translate' {
+    @include translate($values);
+  } @else if $type == 'rotate' {
+    @include translate($values);
+  } @else if $type == 'scale' {
+    @include scale($values);
+  } @else if $type == 'skew' {
+    @include skew($values);
+  }
+}
+
+@mixin transform-origin($value) {
+  -webkit-transform-origin: $value;
+  -ms-transform-origin: $value;
+  transform-origin: $value;
+}

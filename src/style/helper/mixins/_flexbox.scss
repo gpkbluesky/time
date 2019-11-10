@@ -1,0 +1,188 @@
+/* PARENT BOX */
+@mixin display-flex {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: flex;
+}
+
+@mixin display-inline-flex {
+  display: -webkit-inline-flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: -moz-inline-flex;
+  display: inline-flex;
+}
+
+@mixin flex-direction($direction: row) {
+  @if $direction == column-reverse {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+  } @else if $direction == row-reverse {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+  } @else if $direction == column {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+  } @else {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+  }
+  -webkit-flex-direction: $direction;
+  -moz-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flex-dir($args...) {
+  @include flex-direction($args...);
+}
+
+@mixin flex-wrap($wrap: nowrap) {
+  @if $wrap == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $wrap;
+  }
+  -webkit-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-flow(
+  $value: (
+    row nowrap
+  )
+) {
+  -webkit-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin flex-just($args...) {
+  @include justify-content($args...);
+}
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -moz-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+
+@mixin flex-align-i($args...) {
+  @include align-items($args...);
+}
+
+@mixin align-content($value: stretch) {
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+  -webkit-align-content: $value;
+  align-content: $value;
+}
+
+@mixin flex-align-c($args...) {
+  @include align-content($args...);
+}
+
+/* CHILD BOX */
+@mixin flex-order($number: 0) {
+  -webkit-box-ordinal-group: $number + 1;
+  -moz-box-ordinal-group: $number + 1;
+  -webkit-order: $number;
+  -ms-flex-order: $number;
+  order: $number;
+}
+
+@mixin flex-grow($number: 1) {
+  -webkit-flex-grow: $number;
+  -webkit-box-flex: $number;
+  -moz-box-flex: $number;
+  -ms-flex: $number;
+  flex-grow: $number;
+}
+
+@mixin flex-shrink($number: 0) {
+  -webkit-flex-shrink: $number;
+  -moz-flex-shrink: $number;
+  -ms-flex: $number;
+  flex-shrink: $number;
+}
+
+@mixin flex-basis($width: auto) {
+  -webkit-flex-basis: $width;
+  flex-basis: $width;
+}
+
+@mixin flex($flex-grow: 1, $flex-shrink: 0, $flex-basis: auto) {
+  $fg: $flex-grow;
+  @if type-of($flex-grow) == 'list' {
+    $fg: nth($flex-grow, 1);
+  }
+
+  -webkit-box: $fg;
+  -moz-box: $fg;
+  -webkit-flex: $flex-grow $flex-shrink $flex-basis;
+  -ms-flex: $flex-grow $flex-shrink $flex-basis;
+  flex: $flex-grow $flex-shrink $flex-basis;
+}
+
+@mixin align-self($value: auto) {
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  -webkit-align-self: $value;
+  align-self: $value;
+}

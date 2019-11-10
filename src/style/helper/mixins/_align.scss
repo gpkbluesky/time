@@ -1,0 +1,69 @@
+@mixin horizontal-center {
+  top: 0;
+  left: 50%;
+  @include translate(-50%, 0);
+}
+
+@mixin horizontal-center-align {
+  position: relative;
+  @include horizontal-center;
+}
+
+@mixin horizontal-center-align-absolute {
+  position: absolute;
+  @include horizontal-center;
+}
+
+@mixin vertical-center {
+  top: 50%;
+  left: 0;
+  @include translate(0, -50%);
+}
+
+@mixin vertical-center-align {
+  position: relative;
+  @include vertical-center;
+}
+
+@mixin vertical-center-align-absolute {
+  position: absolute;
+  @include vertical-center;
+}
+
+@mixin middle {
+  top: 50%;
+  left: 50%;
+  @include translate(-50%, -50%);
+}
+
+@mixin middle-align {
+  position: relative;
+  @include middle;
+}
+
+@mixin middle-align-absolute {
+  position: absolute;
+  @include middle;
+}
+
+@mixin center-align($direction: all, $type: relative) {
+  @if $direction == 'horizontal' or $direction == 'x' {
+    @if $type == 'absolute' {
+      @include horizontal-center-align-absolute;
+    } @else {
+      @include horizontal-center-align;
+    }
+  } @else if $direction == 'vertical' or $direction == 'y' {
+    @if $type == 'absolute' {
+      @include vertical-center-align-absolute;
+    } @else {
+      @include vertical-center-align;
+    }
+  } @else {
+    @if $type == 'absolute' {
+      @include middle-align-absolute;
+    } @else {
+      @include middle-align;
+    }
+  }
+}

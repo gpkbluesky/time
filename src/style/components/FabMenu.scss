@@ -1,0 +1,19 @@
+.fab-menu {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  &-group {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    @include display-flex;
+    @include flex-dir(row-reverse);
+    .fab-menu-item {
+      position: relative;
+      margin-right: 10px;
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+}

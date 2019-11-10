@@ -1,20 +1,24 @@
 import 'main.scss'
 
-import { Clock, Introducing } from 'components'
+import { Clock, FabMenu, Introducing } from 'components'
 
 import React from 'react'
+import { date } from 'constants/date'
 
 const App = () => {
-  const thatDay = '06/05/2019'
+  const thatDay = date.job.junior
 
   return (
     <div className="App">
       <div className="group">
-        <>
-          <Introducing date={thatDay} />
-          <Clock date={thatDay} />
-        </>
+        {!!thatDay && (
+          <>
+            <Introducing date={thatDay} />
+            <Clock date={thatDay} />
+          </>
+        )}
       </div>
+      <FabMenu />
     </div>
   )
 }
